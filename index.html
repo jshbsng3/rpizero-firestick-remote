@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Remote Control</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="input-area">
+            <input type="text" id="command-input" placeholder="Enter text...">
+            <button id="send-button">↑</button>
+        
+        </div>
+        
+        <div id="keys"> 
+            <br><button id="FireUp" style="font-size: 30px;">▲</button><br>
+            
 
+            <button id="FireLeft" style="font-size: 30px;">◀</button>
+            <button id="FireSelect" style="font-size: 35px;">●</button>
+            <button id="FireRight" style="font-size: 30px;">▶</button>
+
+            
+            <br><button id="FireDown" style="font-size: 30px; margin-bottom:40px">▼</button><br>
+
+            <button id="FireBack" style="font-size: 40px;">⟲</button>
+            <button id="FireHome" style="font-size: 45px;">⌂</button>
+            <button id="FireMenu" style="font-size: 35px;">≡</button>
+
+            <button id="FireRewind" style="font-size: 30px;">⏮︎</button>
+            <button id="FirePlayPause" style="font-size: 30px;">⏯︎</button>
+            <button id="FireFastForward" style="font-size: 30px; margin-bottom:40px">⏭︎</button>
+
+            <button id="FireReboot" style="font-size: 12px; background-color: #A91101">FireStick<br>Reboot</button>
+            <button id="Plex" style="font-size: 15px; margin-bottom:40px">Plex</button>
+			<button id="RpiReboot" style="font-size: 12px; background-color: #A91101">Rpi<br>Reboot</button>
+            
+            
+            <button onclick="appendToDisplay('SoundbarOn')" style="font-size: 15px; text-align: center; display: flex; flex-direction: column; align-items: center;">Sound<br><span style="font-size: 20px;">⏻</span></button>
+            <button onclick="appendToDisplay('SoundbarInput')" style="font-size: 15px;">Sound<br>Input</button>
+            <button onclick="appendToDisplay('SoundbarVolMute')" style="font-size: 15px;">Mute</button>
+
+            <button onclick="appendToDisplay('SoundbarVolUp')" style="font-size: 15px;">Vol +</button>
+            <button onclick="appendToDisplay('SoundbarVolDown')" style="font-size: 15px; margin-bottom:40px">Vol -</button><br>
+            
+            <button onclick="appendToDisplay('TVPower')" style="font-size: 15px; text-align: center; display: flex; flex-direction: column; align-items: center;">TV<br><span style="font-size: 30px;">⏻</span></button>
+            <button onclick="appendToDisplay('TVUp')" style="font-size: 30px;">▲</button>
+            <button onclick="appendToDisplay('TVInput')" style="font-size: 15px; text-align: center; display: flex; flex-direction: column; align-items: center;">TV<br><span style="font-size: 15px;">Input</span></button>
+            
+            <button onclick="appendToDisplay('TVLeft')" style="font-size: 30px;">◀</button>
+            <button onclick="appendToDisplay('TVSelect')" style="font-size: 35px;">●</button>
+            <button onclick="appendToDisplay('TVRight')" style="font-size: 30px;">▶</button>
+            
+            <button onclick="appendToDisplay('TVBack')" style="font-size: 40px;">⟲</button>
+            <button onclick="appendToDisplay('TVDown')" style="font-size: 30px;">▼</button>
+            <button onclick="appendToDisplay('TVMenu')" style="font-size: 35px;">≡</button>
+            
+            <button onclick="appendToDisplay('TVVolMute')" style="font-size: 17px;">Mute</button>
+            <button onclick="appendToDisplay('TVVolUp')" style="font-size: 15px;">Vol +</button>
+            <button onclick="appendToDisplay('TVVolDown')" style="font-size: 15px; margin-bottom:80px">Vol -</button><br>
+            
+        </div>
+        
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
