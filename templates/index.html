@@ -3,66 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Remote Control</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Livingroom Controller</title>
+    
+    <!--remove extra "." when using Flask, ".." used for testing on local machine-->
+    <link rel="stylesheet" href="./styles.css"> 
+
 </head>
 <body>
+    
     <div class="container">
+        
+            <!--Text input area-->
         <div id="input-area">
             <input type="text" id="command-input" placeholder="Enter text...">
             <button id="send-button">↑</button>
-        
         </div>
-        
-        <div id="keys"> 
-            <br><button id="FireUp" style="font-size: 30px;">▲</button><br>
+
+        <div id="keys">
+            <!-- Firestick Navigation -->
+            <div></div>
+            <button id="FireUp" class="direction-v">▲</button>
+            <div></div>
+            
+            <button id="FireLeft" class="direction-h">◀</button>
+            <button id="FireSelect" class="FireSelect">●</button>
+            <button id="FireRight" class="direction-h">▶</button>
+            
+            <div></div>
+            <button id="FireDown" class="direction-v">▼</button>
+            <div></div>
+
+            <!--Space-->
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+
+            <!-- Firestick Controls -->
+            <button id="FireBack" class="FireBack">⟲</button>
+            <button id="FireHome" class="FireHome">⌂</button>
+            <button id="FireMenu" class="FireMenu">≡</button>
+            
+            <button id="FireRewind" class="FireRewind">⏮︎</button>
+            <button id="FirePlayPause" class="FirePlayPause">⏯︎</button>
+            <button id="FireFastForward" class="FireFastForward">⏭︎</button>
+
+            <!--Space-->
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+            
+            <!-- Firestick and Pi Shortcuts -->
+            <button id="FireReboot" class="FireReboot">FireStick<br>Reboot</button>
+            <div></div>
+            <button id="FireWake" class="FireWake">Firestick<br>Wake</button>
+
+            <button id="RpiReboot" class="RpiReboot">Raspberry Pi<br>Reboot</button>
+            <div></div>
+            <button id="FireSleep" class="FireSleep">Firestick<br>Sleep</button>
+
+            <!--Space-->
+            <div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+            
+            <!--Shortcuts-->
+            <button id="Plex" class="Plex">Plex</button>
+            <button id="YouTube" class="YouTube">YouTube</button>
+            <button id="Prime" class="Prime">Prime</button>
+
+            <button id="Netflix" class="Netflix">Netflix</button>
+            <button id="Hulu" class="Hulu">Hulu</button>
+            <button id="HBO" class="HBO">HBO</button>
+
+            <button id="DiscoveryPlus" class="DiscoveryPlus">Disc +</button>
+            <button id="ParamountPlus" class="ParamountPlus">Para +</button>
+            <button id="AppleTV" class="AppleTV"></button>
+
+            <!--Space-->
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+
             
 
-            <button id="FireLeft" style="font-size: 30px;">◀</button>
-            <button id="FireSelect" style="font-size: 35px;">●</button>
-            <button id="FireRight" style="font-size: 30px;">▶</button>
+            <!-- Soundbar Controls -->
+            <button id= "SoundbarOn" class="SoundbarOn">Sound<br><span>⏻</span></button>
+            <button id= "SoundbarVolMute" class="SoundbarVolMute">Mute</button>
+            <button id= "SoundbarInput" class="SoundbarInput">Sound<br>Input</button>
 
-            
-            <br><button id="FireDown" style="font-size: 30px; margin-bottom:40px">▼</button><br>
+            <button id= "SoundbarSubVolUp" class="SoundbarSubVolUp">Sub +</button>
+            <br>
+            <button id= "SoundbarVolUp" class="SoundbarVolUp">Vol +</button>
 
-            <button id="FireBack" style="font-size: 40px;">⟲</button>
-            <button id="FireHome" style="font-size: 45px;">⌂</button>
-            <button id="FireMenu" style="font-size: 35px;">≡</button>
+            <button id= "SoundbarSubVolDown" class="SoundbarSubVolDown">Sub -</button>
+            <br>
+            <button id= "SoundbarVolDown" class="SoundbarVolDown">Vol -</button>
+            
 
-            <button id="FireRewind" style="font-size: 30px;">⏮︎</button>
-            <button id="FirePlayPause" style="font-size: 30px;">⏯︎</button>
-            <button id="FireFastForward" style="font-size: 30px; margin-bottom:40px">⏭︎</button>
-
-            <button id="FireReboot" style="font-size: 12px; background-color: #A91101">FireStick<br>Reboot</button>
-            <button id="Plex" style="font-size: 15px; margin-bottom:40px">Plex</button>
-			<button id="RpiReboot" style="font-size: 12px; background-color: #A91101">Rpi<br>Reboot</button>
+            <!--Space-->
+            <div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
             
+            <!-- TV Controls -->
+            <button id= "TVPower" class="TVPower">TV<br><span>⏻</span></button>
+            <button id= "TVUp" class="direction-v">▲</button>
+            <button iid= "TVInput" class="TVInput"><span>Blank</span></button>
             
-            <button onclick="appendToDisplay('SoundbarOn')" style="font-size: 15px; text-align: center; display: flex; flex-direction: column; align-items: center;">Sound<br><span style="font-size: 20px;">⏻</span></button>
-            <button onclick="appendToDisplay('SoundbarInput')" style="font-size: 15px;">Sound<br>Input</button>
-            <button onclick="appendToDisplay('SoundbarVolMute')" style="font-size: 15px;">Mute</button>
-
-            <button onclick="appendToDisplay('SoundbarVolUp')" style="font-size: 15px;">Vol +</button>
-            <button onclick="appendToDisplay('SoundbarVolDown')" style="font-size: 15px; margin-bottom:40px">Vol -</button><br>
+            <button id= "TVLeft" class="direction-h">◀</button>
+            <button id= "TVSelect" class="TVSelect">●</button>
+            <button id= "TVRight" class="direction-h">▶</button>
             
-            <button onclick="appendToDisplay('TVPower')" style="font-size: 15px; text-align: center; display: flex; flex-direction: column; align-items: center;">TV<br><span style="font-size: 30px;">⏻</span></button>
-            <button onclick="appendToDisplay('TVUp')" style="font-size: 30px;">▲</button>
-            <button onclick="appendToDisplay('TVInput')" style="font-size: 15px; text-align: center; display: flex; flex-direction: column; align-items: center;">TV<br><span style="font-size: 15px;">Input</span></button>
+            <button id= "TVBack" class="TVBack">⟲</button>
+            <button id= "TVDown" class="direction-v">▼</button>
+            <button id= "TVMenu" class="TVMenu">⌂</button>
             
-            <button onclick="appendToDisplay('TVLeft')" style="font-size: 30px;">◀</button>
-            <button onclick="appendToDisplay('TVSelect')" style="font-size: 35px;">●</button>
-            <button onclick="appendToDisplay('TVRight')" style="font-size: 30px;">▶</button>
-            
-            <button onclick="appendToDisplay('TVBack')" style="font-size: 40px;">⟲</button>
-            <button onclick="appendToDisplay('TVDown')" style="font-size: 30px;">▼</button>
-            <button onclick="appendToDisplay('TVMenu')" style="font-size: 35px;">≡</button>
-            
-            <button onclick="appendToDisplay('TVVolMute')" style="font-size: 17px;">Mute</button>
-            <button onclick="appendToDisplay('TVVolUp')" style="font-size: 15px;">Vol +</button>
-            <button onclick="appendToDisplay('TVVolDown')" style="font-size: 15px; margin-bottom:80px">Vol -</button><br>
-            
+            <button id= "TVVolMute" class="TVVolMute">Mute</button>
+            <button id= "TVVolUp" class="TVVolUp">Vol +</button>
+            <button id= "TVVolDown" class="TVVolDown">Vol -</button>
         </div>
-        
     </div>
     <script src="index.js"></script>
 </body>

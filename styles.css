@@ -1,5 +1,5 @@
 body {
-    width: 100%
+    width: 100%;
     margin: 10px;
     display: flex;
     justify-content: center;
@@ -14,6 +14,48 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+#input-area {
+    position: relative;
+    width: calc(3 * 80px + 2 * 10px);
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+
+#command-input {
+    height: 80px;
+    width: 100%;
+    border-radius: 25px;
+    border: none;
+    background-color: rgb(60, 60, 60);
+    color: rgb(194, 194, 194);
+    font-size: 20px;
+    padding: 0 20px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+#send-button {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    height: 80px;
+    width: 80px;
+    border-radius: 0 25px 25px 0;
+    font-size: 30px;
+    border: none;
+    background-color: rgb(60, 60, 60);
+    color: rgb(214, 214, 214);
+    cursor: pointer;
+}
+
+#send-button:hover {
+    filter: brightness(80%)
+}
+
+#send-button:active {
+    filter: brightness(110%)
 }
 
 #keys {
@@ -38,62 +80,185 @@ button {
     align-items: center;
     justify-content: center;
     text-align: center;
-    
 }
 
 button:hover {
-    background-color: rgb(83, 82, 82);
-    color: rgb(24, 24, 24); 
+    /* background-color: rgb(83, 82, 82);
+    color: rgb(24, 24, 24); */
+    filter: brightness(40%)
 }
 
 button:active {
-    background-color: rgb(128, 128, 128);
-    color: rgb(170, 170, 170);  
+    filter: brightness(110%)
 }
 
-#input-area {
-    position: relative;
-    width: calc(3 * 80px + 2 * 10px);
-    padding: 0 10px;
-    margin-bottom: 20px;
-}
-
-#command-input {
-    height: 80px;
-    width: 100%;
-    border-radius: 25px;
-    border: none;
-    background-color: rgb(60, 60, 60);
-    color: rgb(194, 194, 194);
-    font-size: 20px;
-    padding: 0 20px 0 20px;
-    outline: none;  
-    box-sizing: border-box;
-}
-
-#send-button {
-    position: absolute;
-    top: 0;
-    right: 10px;
-    height: 80px;
-    width: 80px;
-    border-radius: 0 25px 25px 0;
+/* Directional Buttons */
+.direction-v {
     font-size: 30px;
+}
+
+.direction-h {
+    font-size: 30px;
+}
+
+/* Specific Button Styles */
+.FireSelect, .TVSelect {
+    font-size: 40px;
+}
+
+.FireBack {
+    font-size: 40px;
+}
+
+.FireHome {
+    font-size: 45px;
+}
+
+.FireMenu, .TVMenu {
+    font-size: 35px;
+}
+
+.FireRewind, .FirePlayPause, .FireFastForward {
+    font-size: 30px;
+}
+
+.FireReboot {
+    font-size: 14px;
+    color: black;
+    background-color: #db7e0c;
+    border-radius: 0 40px 40px 40px;
+}
+
+.RpiReboot {
+    font-size: 12px;
+    background-color: #c50a5e;
+    border-radius: 40px 40px 40px 00px;
+}
+
+.FireSleep {
+    font-size: 14px;
+    border-radius: 0 0 40px 40px;
+    background-color: rgb(11, 25, 88);
+    color: rgb(243, 238, 238);
+}
+
+.FireWake {
+    font-size: 14px;
+    border-radius: 40px 40px 0 0;
+    background-color: rgb(223, 186, 37);
+    color: rgb(33, 33, 33);
+}
+
+.Plex {
+    font-size: 20px;
+    background-color: rgb(255, 170, 0);
+    color: rgb(29, 29, 29);
+    border-radius: 20%;
+}
+
+.YouTube {
+    font-size: 16px;
+    background-color: rgb(205, 50, 22);
+    color: rgba(242, 242, 242, 0.916);
+    border-radius: 20%;
+}
+
+.Prime {
+    font-size: 19px;
+    background-color: rgb(2, 119, 244);
+    color: rgb(239, 239, 239);
+    border-radius: 20%;
+}
+
+.Netflix {
+    font-size: 20px;
+    background-color: rgb(233, 233, 233);
+    color: rgb(200, 43, 15);
+    border-radius: 20%;
+    font: Graphique;
+}
+
+.Hulu {
+    font-size: 20px;
+    background-color: rgb(7, 177, 98);
+    color: rgb(228, 228, 228);
+    border-radius: 20%;
+}
+
+.HBO {
+    font-size: 20px;
+    background-color: rgb(26, 27, 83);
+    color: rgb(225, 225, 225);
+    border-radius: 20%;
+}
+
+.DiscoveryPlus {
+    font-size: 20px;
+    background-color: rgb(1, 37, 145);
+    color: rgb(206, 206, 206);
+    border-radius: 20%;
+}
+
+.ParamountPlus {
+    font-size: 20px;
+    background-color: rgb(0, 136, 255);
+    color: rgb(206, 206, 206);
+    border-radius: 20%;
+}
+
+.AppleTV {
+    font-size: 45px;
+    background-color: rgb(19, 19, 19);
+    color: white;
+    border-radius: 20%;
+}
+
+.SoundbarOn, .TVPower {
+    font-size: 17px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: rgb(60, 60, 60);
-    color: rgb(214, 214, 214);
-    cursor: pointer;
+    background-color: rgb(164, 0, 0);
 }
 
-#send-button:hover {
-    background-color: rgb(77, 77, 77);
-    color: rgb(33, 33, 33); 
+.SoundbarInput, .SoundbarVolMute, .SoundbarVolUp, .SoundbarVolDown, .SoundbarSubVolUp, .SoundbarSubVolDown {
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#send-button:active {
-    background-color: rgb(111, 111, 111);
-    color: rgb(170, 170, 170);  
+.SoundbarVolUp, .SoundbarSubVolUp {
+    border-radius: 40px 40px 0 0 ;
+}
+
+.SoundbarVolDown, .SoundbarSubVolDown {
+    border-radius: 0 0 40px 40px;
+}
+
+.SoundbarOn span, .TVPower span {
+    font-size: 20px;
+}
+
+.TVInput {
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.TVInput span {
+    font-size: 15px;
+}
+
+.TVVolMute {
+    font-size: 17px;
+}
+
+.TVVolUp, .TVVolDown {
+    font-size: 15px;
+}
+
+.TVBack {
+    font-size: 40px;
 }

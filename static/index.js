@@ -43,8 +43,40 @@ document.addEventListener('DOMContentLoaded', () => {
         'FirePlayPause': 'PLAYPAUSE',
         'FireFastForward': 'FASTFORWARD',
         'FireReboot': 'FIREREBOOT',
-		'RpiReboot': 'RPIREBOOT',
-        'Plex': 'PLEX'
+        'RpiReboot': 'RPIREBOOT',
+        'FireSleep': 'FIRESLEEP',
+        'FireWake': 'FIREWAKE',
+        'Plex': 'PLEX',
+        'YouTube': 'YOUTUBE',
+        'Prime': 'PRIME',
+        'Netflix': 'NETFLIX',
+        'Hulu': 'HULU',
+        'HBO': 'HBO',
+        'DiscoveryPlus': 'DISCOVERYPLUS',
+        'ParamountPlus': 'PARAMOUNTPLUS',
+        'AppleTV': 'APPLETV',
+        
+        'SoundbarOn': 'SOUNDBARON',
+        'SoundbarInput': 'SOUNDBARINPUT',
+        'SoundbarVolUp': 'SOUNDBARVOLUP',
+        'SoundbarVolDown': 'SOUNDBARVOLDOWN',
+        'SoundbarVolMute': 'SOUNDBARVOLMUTE',
+        'SoundbarSubVolUp': 'SOUNDBARSUBVOLUP',
+        'SoundbarSubVolDown': 'SOUNDBARSUBVOLDOWN',
+
+        'TVPower': 'TVPOWER',
+        'TVUp': 'TVUP',
+        'TVInput': 'TVINPUT',
+        'TVLeft': 'TVLEFT',
+        'TVSelect': 'TVSELECT',
+        'TVRight': 'TVRIGHT',
+        'TVPBack': 'TVPBACK',
+        'TVDown': 'TVDOWN',
+        'TVMenu': 'TVMENU',
+        'TVVolMute': 'TVVOLMUTE',
+        'TVVolUp': 'TVVOLUP',
+        'TVVolDown': 'TVVOLDOWN',
+
     };
 
     // Attach click event listeners only to mapped buttons

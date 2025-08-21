@@ -50,7 +50,8 @@ KEYCODES = {
 # Special commands
 SPECIAL_COMMANDS = [
     'HOME', 'MENU', 'PLAYPAUSE', 'REWIND', 'FASTFORWARD', 'SLEEP', 'WAKEUP',
-    'FIREVOLUP', 'FIREVOLDOWN', 'FIREMUTE', 'FIRESETTINGS', 'FIREREBOOT', 'PLEX',
+    'FIREVOLUP', 'FIREVOLDOWN', 'FIREMUTE', 'FIRESETTINGS', 'FIREREBOOT', 'RPIREBOOT',
+    'PLEX', 'YOUTUBE', 'PRIME', 'NETFLIX', 'HULU', 'HBO', 'DISCOVERYPLUS', 'PARAMOUNTPLUS',
     'SLEEP=<seconds> (e.g., SLEEP=2 or SLEEP=0.5)'
 ]
 
@@ -143,7 +144,6 @@ def print_commands():
     print("=" * 45)
     print("\nKeycodes (case-insensitive):")
     
-    # Only include Navigation and Special Keys
     navigation = sorted(k for k in KEYCODES if k in ['UP', 'DOWN', 'LEFT', 'RIGHT'])
     special_keys = sorted(k for k in KEYCODES if k in ['ENTER', 'ESC'])
 
@@ -233,10 +233,10 @@ def main():
                     send_adb_keyevent(89)
                 elif command_upper == 'FASTFORWARD':
                     send_adb_keyevent(90)
-                elif command_upper == 'SLEEP':
+                elif command_upper == 'FIRESLEEP':
                     send_adb_keyevent(223)
-                elif command_upper == 'WAKEUP':
-                    send_adb_keyevent(224)
+                elif command_upper == 'FIREWAKEUP':
+                    send_adb_keyevent(26)
                 elif command_upper == 'FIREVOLUP':
                     send_adb_keyevent(24)
                 elif command_upper == 'FIREVOLDOWN':
@@ -248,11 +248,179 @@ def main():
                 elif command_upper == 'FIREREBOOT':
                     subprocess.run(["adb", "reboot"], capture_output=True, text=True)
                 elif command_upper == 'RPIREBOOT':
-                    subprocess.run(["sudo","reboot"], capture_output=True, text=True)
+                    subprocess.run(["sudo", "reboot"], capture_output=True, text=True)
+                elif command_upper == 'FIRESLEEP':
+                    send_adb_keyevent(26)
+                elif command_upper == 'FIREWAKE':
+                    send_adb_keyevent(224)
                 elif command_upper == 'PLEX':
                     subprocess.run(["adb", "shell", "am", "start", "-n", "com.plexapp.android/com.plexapp.plex.activities.SplashActivity"], capture_output=True, text=True)
-                    time.sleep(2)  # Adjust this delay as needed to wait for the app to open
-                    send_adb_keyevent(23)  # Send DPAD_CENTER (select) keyevent
+                elif command_upper == 'YOUTUBE':
+                    subprocess.run(["adb", "shell", "am", "start", "-n", "com.amazon.firetv.youtube/dev.cobalt.app.MainActivity"], capture_output=True, text=True)
+                elif command_upper == 'PRIME':
+                    subprocess.run(
+                        [
+                            "adb", "shell", "am", "start",
+                             "-a", "com.amazon.firebat.action.YAC_LAUNCH",
+                             "-n", "com.amazon.firebat/com.amazon.firebatcore.deeplink.DeepLinkRoutingActivity"
+                        ],
+                        capture_output=True,
+                        text=True)           
+                elif command_upper == 'NETFLIX':
+                    subprocess.run(["adb", "shell", "am", "start", "-n", "com.netflix.ninja/.MainActivity"], capture_output=True, text=True)
+                elif command_upper == 'HULU':
+                    subprocess.run(["adb", "shell", "am", "start", "-n", "com.hulu.plus/.SplashActivity"], capture_output=True, text=True)
+                elif command_upper == 'HBO':
+                    subprocess.run(["adb", "shell", "am", "start", "-n", "com.hbo.hbonow/com.wbd.beam.BeamActivity"], capture_output=True, text=True)
+                elif command_upper == 'DISCOVERYPLUS':
+                    subprocess.run(["adb", "shell", "am", "start", "-n", "com.discovery.discoveryplus.firetv/com.wbd.beam.BeamActivity"], capture_output=True, text=True)
+                elif command_upper == 'PARAMOUNTPLUS':
+                    subprocess.run(["adb", "shell", "am", "start", "-n", "com.cbs.ott/com.paramount.android.pplus.features.splash.tv.SplashMediatorActivity"], capture_output=True, text=True)
+                elif command_upper == 'APPLETV':
+                    subprocess.run(["adb", "shell", "am", "start", "-n", "com.apple.atve.amazon.appletv/.MainActivity"], capture_output=True, text=True)
+                
+                
+                elif command_upper == 'SOUNDBARON':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "27", "/home/jupiter/SITE/rpi_usb_firestick/ir/samsung_soundbar.json",
+                             "Power"
+                        ])
+                elif command_upper == 'SOUNDBARVOLMUTE':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "27", "/home/jupiter/SITE/rpi_usb_firestick/ir/samsung_soundbar.json",
+                             "Mute"
+                        ])
+                elif command_upper == 'SOUNDBARINPUT':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "27", "/home/jupiter/SITE/rpi_usb_firestick/ir/samsung_soundbar.json",
+                             "Input"
+                        ])
+                elif command_upper == 'SOUNDBARSUBVOLUP':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "27", "/home/jupiter/SITE/rpi_usb_firestick/ir/samsung_soundbar.json",
+                             "SubVolUp"
+                        ])
+                elif command_upper == 'SOUNDBARVOLUP':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "27", "/home/jupiter/SITE/rpi_usb_firestick/ir/samsung_soundbar.json",
+                             "VolumeUp"
+                        ])
+                elif command_upper == 'SOUNDBARSUBVOLDOWN':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "27", "/home/jupiter/SITE/rpi_usb_firestick/ir/samsung_soundbar.json",
+                             "SubVolDown"
+                        ])
+                elif command_upper == 'SOUNDBARVOLDOWN':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "27", "/home/jupiter/SITE/rpi_usb_firestick/ir/samsung_soundbar.json",
+                             "VolumeDown"
+                        ])
+                    
+                    
+                elif command_upper == 'TVPOWER':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "Power"
+                        ])
+                elif command_upper == 'TVUP':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "Up"
+                        ])
+                elif command_upper == 'TVINPUT':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "Input"
+                        ])
+                elif command_upper == 'TVLEFT':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "Left"
+                        ])
+                    
+                elif command_upper == 'TVSELECT':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "Select"
+                        ])
+                elif command_upper == 'TVRIGHT':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "Right"
+                        ])
+                elif command_upper == 'TVBACK':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "Back"
+                        ])
+                    
+                elif command_upper == 'TVDOWN':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "Down"
+                        ])
+                elif command_upper == 'TVMENU':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "Home"
+                        ])
+                    
+                elif command_upper == 'TVMUTE':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "Mute"
+                        ])
+                elif command_upper == 'TVVOLUP':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "VolumeUp"
+                        ])
+                elif command_upper == 'TVVOLDOWN':
+                    subprocess.run(
+                        [
+                            "python3", "/home/jupiter/SITE/rpi_usb_firestick/ir/emitter.py", 
+                            "17", "/home/jupiter/SITE/rpi_usb_firestick/ir/tlc_tv.json",
+                             "VolumeDown"
+                        ])
+                    
+                
+                
                 elif command_upper in KEYCODES:
                     keycode = KEYCODES[command_upper]
                     modifier = 0x00
@@ -268,4 +436,5 @@ def main():
         sys.exit(1)
 
 if __name__ == "__main__":
+    subprocess.run(["sudo", "pigpiod"], capture_output=True, text=True)
     main()
